@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import com.digarfi.orderProduct.entities.pk.OrderItemPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 	@Entity
@@ -17,7 +18,7 @@ import com.digarfi.orderProduct.entities.pk.OrderItemPK;
 
 	
 	@EmbeddedId
-	private OrderItemPK id;
+	private OrderItemPK id = new OrderItemPK();
 	
 	private Integer quantity;
 	private Double price;
@@ -33,6 +34,7 @@ import com.digarfi.orderProduct.entities.pk.OrderItemPK;
 		this.price = price;
 	}
 
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
